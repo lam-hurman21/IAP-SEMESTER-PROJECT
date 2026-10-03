@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About | Campus Supply{% endblock %}
+
+{% block content %}
+<section class="intro" aria-labelledby="page-title">
+    <p class="eyebrow">Everyday essentials</p>
+    <h1 id="page-title">About Campus Supply</h1>
+    <p class="lead">Useful things for a new term.</p>
+</section>
+
+<section class="about-layout" aria-labelledby="about-title">
+    <div class="about-copy">
+        <h2 id="about-title">Less clutter. More focus.</h2>
+        <p>From the first lecture to the last study session, a few reliable basics make a difference.</p>
+        <p>A notebook for your ideas, a bag for the day ahead, and a light for your desk. Simple essentials for the rhythm of student life.</p>
+        <a class="text-link" href="{% url 'products:index' %}">Browse the collection <span aria-hidden="true">&rarr;</span></a>
+    </div>
+    <img class="about-image" src="{% static 'products/notebook.jpg' %}" alt="An open notebook ready for a new set of ideas" width="800" height="600">
+</section>
+{% endblock %}

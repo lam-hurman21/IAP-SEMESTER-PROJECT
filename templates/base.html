@@ -1,0 +1,32 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Campus Supply{% endblock %}</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="{% static 'products/styles.css' %}">
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+        <div class="page-width header-inner">
+            <a class="brand" href="{% url 'products:index' %}">Campus Supply<span>.</span></a>
+            <nav aria-label="Main navigation">
+                <a href="{% url 'products:index' %}"{% if request.resolver_match.url_name == 'index' %} aria-current="page"{% endif %}>Catalog</a>
+                <a href="{% url 'products:about' %}"{% if request.resolver_match.url_name == 'about' %} aria-current="page"{% endif %}>About</a>
+            </nav>
+        </div>
+    </header>
+    <main id="main-content" class="page-width">
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="site-footer">
+        <div class="page-width footer-inner">
+            <span>Campus Supply</span>
+            <span>For everyday student life.</span>
+        </div>
+    </footer>
+</body>
+</html>
