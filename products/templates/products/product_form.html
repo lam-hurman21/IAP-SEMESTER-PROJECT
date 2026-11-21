@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}{% if product %}Edit{% else %}Add{% endif %} product | Campus Supply{% endblock %}
+{% block content %}
+<section class="intro"><h1>{% if product %}Edit{% else %}Add{% endif %} product</h1></section>
+<div class="form-panel">
+    {% if perms.products.view_category or perms.products.change_category %}<p>Manage categories in the <a href="{% url 'admin:products_category_changelist' %}">admin</a>.</p>{% endif %}
+    <form method="post">
+        {% csrf_token %}
+        {% include 'includes/form_fields.html' %}
+        <div class="form-actions">
+            <button type="submit" class="button">Save product</button>
+            <a href="{% url 'products:index' %}">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

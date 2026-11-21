@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}My account | Campus Supply{% endblock %}
+{% block content %}
+<section class="intro"><h1>My account</h1><p class="lead">Welcome, {{ user.username }}.</p></section>
+<div class="form-panel">
+    <p><strong>Email:</strong> {{ user.email|default:'Not provided' }}</p>
+    <p><strong>Access:</strong> {% if user.is_staff %}Staff{% else %}Member{% endif %}</p>
+    {% if request.session.get_expire_at_browser_close %}
+    <p>Your session ends when you close your browser, unless your browser restores it.</p>
+    {% else %}
+    <p>You chose to stay signed in for up to 14 days.</p>
+    {% endif %}
+    <a class="button" href="{% url 'products:index' %}">Browse catalog</a>
+    {% if user.is_staff and perms.products.add_product %}<a class="text-link" href="{% url 'products:product_create' %}">Add product</a>{% endif %}
+    {% if user.is_staff %}<p><a href="{% url 'admin:index' %}">Open administration</a></p>{% endif %}
+</div>
+{% endblock %}

@@ -16,10 +16,24 @@
             <nav aria-label="Main navigation">
                 <a href="{% url 'products:index' %}"{% if request.resolver_match.url_name == 'index' %} aria-current="page"{% endif %}>Catalog</a>
                 <a href="{% url 'products:about' %}"{% if request.resolver_match.url_name == 'about' %} aria-current="page"{% endif %}>About</a>
+                {% if user.is_authenticated %}
+                <a href="{% url 'products:account' %}">My account</a>
+                <form method="post" action="{% url 'products:logout' %}" class="logout-form">
+                    {% csrf_token %}<button type="submit" class="nav-button">Log out</button>
+                </form>
+                {% else %}
+                <a href="{% url 'products:login' %}">Log in</a>
+                <a href="{% url 'products:register' %}">Register</a>
+                {% endif %}
             </nav>
         </div>
     </header>
     <main id="main-content" class="page-width">
+        {% if messages %}
+        <div class="messages" role="status">
+            {% for message in messages %}<p class="message">{{ message }}</p>{% endfor %}
+        </div>
+        {% endif %}
         {% block content %}{% endblock %}
     </main>
     <footer class="site-footer">
