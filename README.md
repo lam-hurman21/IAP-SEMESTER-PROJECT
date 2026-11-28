@@ -2,6 +2,8 @@
 
 A student-essentials catalog built with Python and Django 5.2 LTS. Products and categories are stored in SQLite. The app includes Django forms, registration, login/logout, database-backed sessions, and an administration panel.
 
+For teacher assessment, see [Project requirements and teacher setup](PROJECT_REQUIREMENTS.md), including software requirements, complete setup commands, and admin credentials with account-creation instructions.
+
 ## Set up and run
 
 From PowerShell in this project directory:
@@ -15,7 +17,7 @@ py -3 -m venv .venv
 .\.venv\Scripts\python.exe manage.py runserver 127.0.0.1:8000
 ```
 
-Use Python 3.10 or later. If `.venv` already exists, skip creating it. Enter your own administrator credentials in the terminal when prompted. No default administrator account or password is shipped.
+Use Python 3.10 or later. If `.venv` already exists, skip creating it. Enter your own administrator credentials in the terminal when prompted, or follow the [teacher setup guide](PROJECT_REQUIREMENTS.md#4-create-the-teacher-admin-account) to create the documented assessment account. Admin accounts are not created automatically.
 
 `seed_catalog` is optional: it adds the original three sample products and their categories. Running it again preserves existing entries and edits. Without sample data, the catalog shows an empty-state message until products are added.
 
